@@ -1,4 +1,3 @@
-import random
 import argparse
 from functools import partial
 import numpy as np
@@ -10,10 +9,11 @@ from mvdream.camera_utils import get_camera
 from mvdream.ldm.util import instantiate_from_config
 from mvdream.ldm.models.diffusion.ddim import DDIMSampler
 from mvdream.model_zoo import build_model
+import secrets
 
 
 def set_seed(seed):
-    random.seed(seed)
+    secrets.SystemRandom().seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
