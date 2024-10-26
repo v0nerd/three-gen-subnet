@@ -29,7 +29,7 @@ def send_post_request(prompt: str, file_path: str, url: str, version: str, gener
 
         # Send the POST request
         headers = {"Content-Type": "application/json"}
-        response = requests.post(url, data=json.dumps(payload), headers=headers)
+        response = requests.post(url, data=json.dumps(payload), headers=headers, timeout=60)
 
         # Print the response from the server
         print(f"Response status code: {response.status_code}")
