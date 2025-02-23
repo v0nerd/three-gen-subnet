@@ -1,10 +1,10 @@
 import base64
-import random
 import time
 from pathlib import Path
 
 import aiohttp
 import bittensor as bt
+import secrets
 
 
 FIRST_FETCH_DELAY = 5 * 60  # 5 minutes
@@ -43,7 +43,7 @@ class Dataset:
 
     def get_random_prompt(self) -> str:
         available_prompts = self._fresh_prompts or self._default_prompts
-        return random.choice(available_prompts)  # noqa # nosec
+        return secrets.choice(available_prompts)  # noqa # nosec
 
     def should_fetch_fresh_prompts(self) -> bool:
         return time.time() > self._last_fetch_time + self._fetch_prompt_interval
